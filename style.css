@@ -298,3 +298,47 @@ header p {
         border-radius: 5px; /* Use the less aggressive border-radius from the main file */
     }
 }
+/* --- Styles for Homepage Buttons (index.html) --- */
+
+.cta-button {
+    /* Basic style must be defined in style.css */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    transition: .4s;
+    font-size: 1.4rem;
+}
+
+.cta-button:hover {
+    background: #1eba57; /* Darker green on hover */
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background: #128C7E; /* Darker teal/green */
+    color: white;
+    padding: 16px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 15px;
+}
+
+.btn-secondary:hover {
+    background: #117a6e;
+}
+
+/* Ensure the WhatsApp button uses the primary WhatsApp color (if not already defined) */
+.whatsapp {
+    background: #25d366 !important;
+}
+
+/* Responsive adjustment (ensure this is at the end of style.css) */
+@media (max-width:600px){
+    /* ... other mobile styles ... */
+    .cta-button, .btn-secondary {
+        display:block;
+        width:90%;
+        margin:20px auto;
+        font-size:1.3rem;
+    }
+}
