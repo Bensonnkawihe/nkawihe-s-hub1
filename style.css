@@ -1,6 +1,6 @@
 /* style.css – Nkawihe’s Hub (Desktop + Mobile Friendly) */
 
-/* CRITICAL FIX 1: CSS Variables MUST be defined first */
+/* CRITICAL FIX 1: CSS Variables MUST be defined first for consistent branding */
 :root {
   --primary-color: #2c7a7b; /* Teal-green (Matches header background) */
   --accent-color: #ffc400; /* Gold/Yellow for CTA buttons and accents */
@@ -28,11 +28,11 @@ header {
   padding: 40px 20px;
 }
 
-/* CRITICAL FIX 2: Logo Styling (uses the new .header-logo class) */
+/* Logo Styling - Applied consistently via class="header-logo" */
 .header-logo {
   display: block;
   margin: 0 auto 15px auto; /* Centers the logo and adds bottom margin */
-  max-width: 120px;
+  max-width: 120px; /* Ensures logo is not too big on any page */
   height: auto;
   border-radius: 50%;
   border: 4px solid rgba(255,255,255,0.3);
@@ -167,7 +167,7 @@ footer {
 }
 .social-links a {
     display: inline-block;
-    margin: 5px 10px; /* This fixes the spacing issue! */
+    margin: 5px 10px; 
     padding: 10px 15px;
     border-radius: 5px;
     text-decoration: none;
@@ -210,4 +210,91 @@ button#submitButton:hover {
 /* Ensure form groups have spacing */
 .form-group {
     margin-bottom: 15px;
+}
+/* --- Styling for Product Gallery (products.html) --- */
+
+/* 1. Gallery Layout (Grid for 3 columns on desktop, 2 on tablet) */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* 2. Individual Item Styling */
+.gallery-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 3. Image Sizing */
+.gallery-item img {
+    width: 100%;
+    height: 200px; /* Fixed height for uniformity */
+    object-fit: cover; /* Ensures images fill the space without distortion */
+    border-bottom: 1px solid #ddd;
+}
+
+/* 4. Text Styling */
+.gallery-item p {
+    padding: 15px 10px;
+    margin: 0;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+/* --- Additional Styles Moved from about.html (for consistency) --- */
+
+/* Ensures the header tagline looks correct without an inline class */
+header p {
+    font-style: italic;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Redefining the CTA Button styling to be more robust */
+.cta-button {
+    /* Existing styles from style.css */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+/* Ensuring the button colors are defined in the external sheet */
+.whatsapp {
+    background: #25d366 !important; /* Use !important temporarily if necessary to override */
+    color: white !important;
+}
+
+.facebook {
+    background: #1877f2 !important; /* Use !important temporarily if necessary to override */
+    color: white !important;
+}
+
+/* Responsive adjustment for all nav items on mobile */
+@media (max-width: 600px) {
+    nav li {
+        display: block !important; 
+        margin: 10px 0 !important;
+    }
+    .cta-button {
+        display: block;
+        width: 90%;
+        margin: 15px auto;
+        border-radius: 5px; /* Use the less aggressive border-radius from the main file */
+    }
 }
