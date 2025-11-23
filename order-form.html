@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nkawihe's Hub - Online Order</title>
+  
+  <link rel="stylesheet" href="style.css" /> 
+  <link rel="icon" type="image/png" href="favicon.png"> 
+</head>
+<body>
+  
+  <header>
+    <img src="logo.png" alt="Nkawihe's Hub Logo" class="header-logo"> 
+    
+    <h1>Online Order Form</h1>
+    <p>Electronics & Fresh Farm Produce</p>
+    
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Place Your Order</h2>
+    <p style="text-align:center;">Your one stop shop for phone accessories and spares</p>
+    
+    <section class="social-links" style="margin-bottom: 30px;">
+      <a class="whatsapp" href="https://wa.me/265997000400" target="_blank">Chat on WhatsApp</a>
+      <a class="facebook" href="https://facebook.com/nkawiheshub" target="_blank">Visit our Facebook Page</a>
+    </section>
+    
+    <h2>Product Price List</h2>
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Description</th>
+        <th>Price (MWK)</th>
+        <th>Availability</th>
+      </tr>
+      <tr>
+        <td>Phone Cover</td>
+        <td>Silicone Covers</td>
+        <td>5,000</td>
+        <td>In Stock</td>
+      </tr>
+      <tr>
+        <td>Screen Protector</td>
+        <td>Tempered Glass</td>
+        <td>15,000</td>
+        <td>In Stock</td>
+      </tr>
+      <tr>
+        <td>Charger</td>
+        <td>Fast Charging Adapter</td>
+        <td>20,000</td>
+        <td>In Stock</td>
+      </tr>
+      <tr>
+        <td>Power Bank</td>
+        <td>10,000mAh</td>
+        <td>40,000</td>
+        <td>Low Stock</td>
+      </tr>
+      <tr>
+        <td>*Other Items*</td>
+        <td>Screens, Batteries, Repair</td>
+        <td>*Varies*</td>
+        <td>Contact Us</td>
+      </tr>
+    </table>
+    
+    <form id="orderForm" onsubmit="sendToWhatsApp(event)">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter your name" required />
+      </div>
+      
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="e.g 0999 000 000" required />
+      </div>
+      
+      <div class="form-group">
+        <label>Product</label>
+        <select id="product" required>
+          <option value="">-- Select Product --</option>
+          <option value="Phone Cover - MK 5,000">Phone Cover - MK 5,000</option>
+          <option value="Screen Protector - MK 15,000">Screen Protector - MK 15,000</option>
+          <option value="Charger - MK 20,000">Charger - MK 20,000</option>
+          <option value="Power Bank - MK 40,000">Power Bank - MK 40,000</option>
+          <option value="Other/Custom Inquiry">Other/Custom Inquiry - Contact for Price</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Quantity</label>
+        <input type="number" id="quantity" min="1" value="1" required />
+      </div>
+      
+      <div class="form-group">
+        <label>Delivery Address</label>
+        <textarea id="address" rows="3" placeholder="Where should we deliver? (e.g., Mponela Market)" required></textarea>
+      </div>
+      
+      <button type="submit" id="submitButton">📱 Send Order via WhatsApp</button>
+    </form>
+  </div>
+  
+  <footer>
+    <p>© 2025 Nkawihe’s Hub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function sendToWhatsApp(event) {
+      event.preventDefault();
+      
+      const fullname = document.getElementById('fullname').value;
+      const phone = document.getElementById('phone').value;
+      const product = document.getElementById('product').value;
+      const quantity = document.getElementById('quantity').value;
+      const address = document.getElementById('address').value;
+      const button = document.getElementById('submitButton');
+      
+      // Construct the formatted message
+      const message = \`*NEW ORDER FROM WEBSITE*%0A%0A*Customer:* ${fullname}%0A*Phone:* ${phone}%0A*Product:* ${product}%0A*Quantity:* ${quantity}%0A*Delivery Address:* ${address}%0A%0AThank you for ordering from Nkawihe's Hub!\`;
+      
+      // WhatsApp API URL
+      const whatsappURL = \`https://wa.me/265997000400?text=${message}\`;
+      
+      // Open the WhatsApp chat in a new window/tab
+      window.open(whatsappURL, '_blank');
+      
+      // Provide visual feedback and reset form
+      button.textContent = '✅ Order Sent! Please check WhatsApp.';
+      button.style.backgroundColor = '#20ba5a'; 
+
+      setTimeout(() => {
+        button.textContent = '📱 Send Order via WhatsApp';
+        button.style.backgroundColor = '#25d366';
+      }, 3000); 
+
+      document.getElementById('orderForm').reset();
+    }
+  </script>
+</body>
+</html>
