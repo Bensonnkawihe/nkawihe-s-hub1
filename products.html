@@ -1,72 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="All products from Nkawihe’s Hub – Phone accessories & fresh farm produce | Mponela" />
-  <title>Our Products | Nkawihe’s Hub</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="stylesheet" href="style.css" />
-  </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="All products from Nkawihe’s Hub – Phone accessories & fresh farm produce | Mponela" />
+  <title>Our Products | Nkawihe’s Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; }
+    section { animation: fadeIn 0.8s; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+
+    /* Floating Buttons - Stacked */
+    .floating-btns {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .floating-btns a {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .floating-btns a:hover { transform: scale(1.15); }
+    .floating-wa { background: #25d366; }
+    .floating-fb { background: #1877f2; }
+    .floating-btns img { width: 38px; }
+
+    /* Dark Mode Toggle - Top Right */
+    .mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 50px;
+      background: #333;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    }
+    .mode-toggle:hover { transform: scale(1.05); }
+
+    /* Dark Mode Styles */
+    .dark-mode {
+      background: #121212 !important;
+      color: #e0e0e0;
+    }
+    .dark-mode header, .dark-mode section, .dark-mode .container {
+      background: #1e1e1e !important;
+    }
+    .dark-mode table, .dark-mode .gallery-item { background: #252525; border-color: #444; }
+    .dark-mode table th { background: #333; }
+    .dark-mode .cta-button { opacity: 0.9; }
+  </style>
+</head>
 <body>
 
-  <header>
-    <img src="logo.png" alt="Nkawihe's Hub Logo" class="header-logo">
-    <h1>Nkawihe’s Hub</h1>
-    <p>Your trusted partner for quality electronics & fresh produce</p>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="order-form.html">Online Order</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Dark/Light Mode Toggle -->
+  <button id="darkModeToggle" class="mode-toggle" onclick="toggleDarkMode()">
+  🌙 Dark Mode
+</button>
 
-  <section id="products">
-    <h2>Our Products</h2>
-    <p>High-quality phone accessories and fresh, locally grown farm produce. Tap any product or use the buttons below to order instantly.</p>
+  <header>
+    <img src="logo.png" alt="Nkawihe's Hub Logo" class="header-logo">
+    <h1>Nkawihe’s Hub</h1>
+    <p>Your trusted partner for quality electronics & fresh produce</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="order-form.html">Online Order</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <div class="gallery">
-      <div class="gallery-item">
-        <img src="charger.jpg" alt="Phone Chargers & Cables">
-        <p>Phone Chargers & Cables</p>
-      </div>
-      <div class="gallery-item">
-        <img src="powerbank.jpg" alt="Power Banks">
-        <p>Power Banks</p>
-      </div>
-      <div class="gallery-item">
-        <img src="earphones.jpg" alt="Earphones & Cases">
-        <p>Earphones & Cases</p>
-      </div>
-      <div class="gallery-item">
-        <img src="maize.jpg" alt="Fresh Maize">
-        <p>Fresh Maize</p>
-      </div>
-      <div class="gallery-item">
-        <img src="groundnuts.jpg" alt="Groundnuts">
-        <p>Groundnuts</p>
-      </div>
-      <div class="gallery-item">
-        <img src="soya.jpg" alt="Soya Beans & Beans">
-        <p>Soya Beans & Beans</p>
-      </div>
-    </div>
+  <section id="products">
+    <h2>Our Products</h2>
+    <p>High-quality phone accessories and fresh, locally grown farm produce. Tap any product or use the buttons below to order instantly.</p>
 
-    <div style="margin-top:50px;">
-      <a href="order-form.html" class="cta-button">Place Your Order Now!</a>
-      
-            <a href="https://wa.me/265997000400" target="_blank" class="cta-button whatsapp" style="margin-top: 20px;">Chat on WhatsApp</a>
-    </div>
-  </section>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="charger.jpg" alt="Phone Chargers & Cables">
+        <p>Phone Chargers & Cables</p>
+      </div>
+      <div class="gallery-item">
+        <img src="powerbank.jpg" alt="Power Banks">
+        <p>Power Banks</p>
+      </div>
+      <div class="gallery-item">
+        <img src="earphones.jpg" alt="Earphones & Cases">
+        <p>Earphones & Cases</p>
+      </div>
+      <div class="gallery-item">
+        <img src="maize.jpg" alt="Maize">
+        <p>Maize</p>
+      </div>
+      <div class="gallery-item">
+        <img src="groundnuts.jpg" alt="Groundnuts">
+        <p>Groundnuts</p>
+      </div>
+      <div class="gallery-item">
+        <img src="soya beans.jpg" alt="Soya Beans">
+        <p>Soya Beans</p>
+      </div>
+      <div class="gallery-item">
+        <img src="beans.jpg" alt="Beans">
+        <p>Beans</p>
+      </div>
+    </div>
 
-  <footer>
-    <p>© 2025 Nkawihe’s Hub • Mponela, Malawi • All rights reserved • BRN: V6SVW5N</p>
-  </footer>
+    <div style="text-align:center; margin-top:50px;">
+      <a href="order-form.html" class="cta-button">Place Your Order Now!</a>
+    </div>
 
+    <div class="social-links" style="margin-top:25px;">
+      <a href="https://wa.me/265997000400" class="whatsapp cta-button">Chat on WhatsApp</a>
+      <a href="https://facebook.com/nkawiheshub" class="facebook cta-button">Visit Facebook Page</a>
+    </div>
+  </section>
+
+  <!-- Floating Buttons -->
+  <div class="floating-btns">
+    <a href="https://wa.me/265997000400" class="floating-wa" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+    <a href="https://facebook.com/nkawiheshub" class="floating-fb" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+    </a>
+  </div>
+
+  <footer>
+    <p>© 2025 Nkawihe’s Hub • Mponela, Malawi • All rights reserved • BRN: V6SVW5N</p>
+  </footer>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      const btn = document.querySelector('.mode-toggle');
+      btn.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+    }
+  </script>
+    <script src="community-wall.js"></script>
+<script>
+// Permanent Dark Mode Across All Pages
+function toggleDarkMode() {
+  const isDark = document.body.classList.toggle('dark-mode');
+  localStorage.setItem('nkawiheDarkMode', isDark);
+  document.getElementById('darkModeToggle').textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+}
+
+// Run when page loads
+if (localStorage.getItem('nkawiheDarkMode') === 'true') {
+  document.body.classList.add('dark-mode');
+  const btn = document.getElementById('darkModeToggle');
+  if (btn) btn.textContent = '☀️ Light Mode';
+} else {
+  const btn = document.getElementById('darkModeToggle');
+  if (btn) btn.textContent = '🌙 Dark Mode';
+}
+</script>
 </body>
 </html>
-
