@@ -1,112 +1,207 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Order online from Nkawihe’s Hub – Phone accessories & farm produce | Mponela" />
-  <title>Online Order | Nkawihe’s Hub</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="stylesheet" href="style.css" />
-  </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Order online from Nkawihe’s Hub – Phone accessories & farm produce | Mponela" />
+  <title>Online Order | Nkawihe’s Hub</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; }
+    section { animation: fadeIn 0.8s; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+
+    /* Floating Buttons */
+    .floating-btns {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .floating-btns a {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .floating-btns a:hover { transform: scale(1.15); }
+    .floating-wa { background: #25d366; }
+    .floating-fb { background: #1877f2; }
+    .floating-btns img { width: 38px; }
+
+    /* Dark/Light Mode Toggle */
+    .mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 50px;
+      background: #333;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    }
+    .mode-toggle:hover { transform: scale(1.05); }
+
+    /* Dark Mode */
+    .dark-mode { background: #121212 !important; color: #e0e0e0; }
+    .dark-mode header, .dark-mode section, .dark-mode .container { background: #1e1e1e !important; }
+    .dark-mode table, .dark-mode input, .dark-mode textarea, .dark-mode select { background: #252525; border-color: #444; color: #e0e0e0; }
+    .dark-mode table th { background: #333; }
+  </style>
+</head>
 <body>
 
-  <header>
-    <img src="logo.png" alt="Nkawihe's Hub Logo" class="header-logo">
-    <h1>Nkawihe’s Hub</h1>
-    <p>Your trusted partner for quality electronics & fresh produce</p>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="order-form.html">Online Order</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Dark/Light Toggle -->
+  <button id="darkModeToggle" class="mode-toggle" onclick="toggleDarkMode()">
+  🌙 Dark Mode
+</button>
 
-  <div class="container">
-    <h2>Place Your Order Online</h2>
+  <header>
+    <img src="logo.png" alt="Nkawihe's Hub Logo" class="header-logo">
+    <h1>Nkawihe’s Hub</h1>
+    <p>Your trusted partner for quality electronics & fresh produce</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="order-form.html">Online Order</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <div class="social-links">
-      <a href="https://wa.me/265997000400" target="_blank" class="whatsapp">Chat on WhatsApp</a>
-      <a href="https://facebook.com/nkawiheshub" target="_blank" class="facebook">Visit Facebook Page</a>
-    </div>
+  <section class="container">
+    <h2>Place Your Order Online</h2>
 
-    <h2>Current Prices</h2>
-    <table>
-      <tr><th>Product</th><th>Description</th><th>Price (MWK)</th><th>Availability</th></tr>
-      <tr><td>Phone Cover</td><td>Silicone / Hard Case</td><td>5,000</td><td>In Stock</td></tr>
-      <tr><td>Screen Protector</td><td>Tempered Glass</td><td>15,000</td><td>In Stock</td></tr>
-      <tr><td>Charger</td><td>Fast Charging Adapter + Cable</td><td>20,000</td><td>In Stock</td></tr>
-      <tr><td>Power Bank</td><td>10,000 mAh</td><td>40,000</td><td>Low Stock</td></tr>
-      <tr><td>Earphones / Cases</td><td>Wired & Wireless</td><td>2,000 – 35,000</td><td>In Stock</td></tr>
-      <tr><td>Other Items</td><td>Screens, Batteries, Repairs</td><td>Varies</td><td>Contact Us</td></tr>
-    </table>
+    <div class="social-links" style="margin-bottom: 35px;">
+      <a href="https://wa.me/265997000400" class="whatsapp cta-button">Chat on WhatsApp</a>
+      <a href="https://facebook.com/nkawiheshub" class="facebook cta-button">Visit Facebook Page</a>
+    </div>
 
-    <form id="orderForm" onsubmit="sendToWhatsApp(event)">
-      <div class="form-group">
-        <label>Full Name *</label>
-        <input type="text" id="fullname" placeholder="Enter your name" required />
-      </div>
-      <div class="form-group">
-        <label>Phone Number (WhatsApp) *</label>
-        <input type="tel" id="phone" placeholder="0997 000 400" required />
-      </div>
-      <div class="form-group">
-        <label>Product *</label>
-        <select id="product" required>
-          <option value="">-- Select Product --</option>
-          <option>Phone Cover – 5,000 MWK</option>
-          <option>Screen Protector – 15,000 MWK</option>
-          <option>Charger – 20,000 MWK</option>
-          <option>Power Bank 10,000mAh – 40,000 MWK</option>
-          <option>Earphones / Cases – from 12,000 MWK</option>
-          <option>Other / Custom Item (we’ll call you)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Quantity *</label>
-        <input type="number" id="quantity" min="1" value="1" required />
-      </div>
-      <div class="form-group">
-        <label>Delivery Location *</label>
-        <textarea id="address" rows="3" placeholder="e.g. Mponela Market, Area 25, Kasungu, etc." required></textarea>
-      </div>
-      <button type="submit" id="submitButton">Send Order via WhatsApp</button>
-    </form>
-  </div>
+    <h2>Current Prices</h2>
+    <table>
+      <tr><th>Product</th><th>Description</th><th>Price (MWK)</th><th>Availability</th></tr>
+      <tr><td>Phone Cover</td><td>Silicone / Hard Case</td><td>5,000</td><td>In Stock</td></tr>
+      <tr><td>Screen Protector</td><td>Tempered Glass</td><td>15,000</td><td>In Stock</td></tr>
+      <tr><td>Charger</td><td>Fast Charging Adapter + Cable</td><td>20,000</td><td>In Stock</td></tr>
+      <tr><td>Power Bank</td><td>30,000 mAh</td><td>40,000</td><td>Low Stock</td></tr>
+      <tr><td>Earphones / Cases</td><td>Wired & Wireless</td><td>2,000 – 35,000</td><td>In Stock</td></tr>
+      <tr><td>Other Items</td><td>Screens, Batteries, LCDs</td><td>Varies</td><td>Contact Us</td></tr>
+    </table>
 
-  <footer>
-    <p>© 2025 Nkawihe’s Hub • Mponela, Malawi • All rights reserved • BRN: V6SVW5N</p>
-  </footer>
+    <form id="orderForm" onsubmit="sendToWhatsApp(event)">
+      <div class="form-group">
+        <label>Full Name *</label>
+        <input type="text" id="fullname" placeholder="Enter your name" required />
+      </div>
+      <div class="form-group">
+        <label>Phone Number (WhatsApp) *</label>
+        <input type="tel" id="phone" placeholder="e.g. 0997 123 456" required />
+      </div>
+      <div class="form-group">
+        <label>Product *</label>
+        <select id="product" required>
+          <option value="">-- Select Product --</option>
+          <option>Phone Cover – 5,000 MWK</option>
+          <option>Screen Protector – 15,000 MWK</option>
+          <option>Charger – 20,000 MWK</option>
+          <option>Power Bank 30,000mAh – 40,000 MWK</option>
+          <option>Earphones / Cases – from 2,000 MWK</option>
+          <option>Other / Custom Item (we’ll call you)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Quantity *</label>
+        <input type="number" id="quantity" min="1" value="1" required />
+      </div>
+      <div class="form-group">
+        <label>Delivery Location *</label>
+        <textarea id="address" rows="3" placeholder="e.g. Mponela, Madisi, Tchawale, etc." required></textarea>
+      </div>
+      <button type="submit" id="submitButton">Send Order via WhatsApp</button>
+    </form>
+  </section>
 
-  <script>
-    function sendToWhatsApp(e) {
-      e.preventDefault();
-      const n = document.getElementById('fullname').value.trim();
-      const p = document.getElementById('phone').value.trim();
-      const pr = document.getElementById('product').value;
-      const q = document.getElementById('quantity').value;
-      const a = document.getElementById('address').value.trim();
-      const btn = document.getElementById('submitButton');
+  <footer>
+    <p>© 2025 Nkawihe’s Hub • Mponela, Malawi • All rights reserved • BRN: V6SVW5N</p>
+  </footer>
 
-      const msg = `NEW ORDER%0A%0AName: ${n}%0APhone: ${p}%0AProduct: ${pr}%0AQuantity: ${q}%0ADelivery: ${a}%0A%0AThank you! We'll reply instantly`;
+  <!-- Floating Buttons -->
+  <div class="floating-btns">
+    <a href="https://wa.me/265997000400" class="floating-wa" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+    <a href="https://facebook.com/nkawiheshub" class="floating-fb" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_(2019).svg" alt="Facebook">
+    </a>
+  </div>
 
-      btn.textContent = 'Order Sent! Opening WhatsApp...';
-      btn.style.backgroundColor = '#1eba57';
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      const btn = document.querySelector('.mode-toggle');
+      btn.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+    }
 
-      setTimeout(() => window.open(`https://wa.me/265997000400?text=${msg}`, '_blank'), 300);
+    function sendToWhatsApp(e) {
+      e.preventDefault();
+      const n = document.getElementById('fullname').value.trim();
+      const p = document.getElementById('phone').value.trim();
+      const pr = document.getElementById('product').value;
+      const q = document.getElementById('quantity').value;
+      const a = document.getElementById('address').value.trim();
+      const btn = document.getElementById('submitButton');
 
-      setTimeout(() => {
-        btn.textContent = 'Send Order via WhatsApp';
-        btn.style.backgroundColor = '#25d366';
-      }, 3500);
+      const msg = `Hello Nkawihe’s Hub!%0A%0AI would like to order:%0A%0AName: ${n}%0APhone: ${p}%0AProduct: ${pr}%0AQuantity: ${q}%0ADelivery Location: ${a}%0A%0AThank you!`;
 
-      document.getElementById('orderForm').reset();
-    }
-  </script>
+      btn.textContent = 'Order Sent! Opening WhatsApp...';
+      btn.style.backgroundColor = '#1eba57';
+
+      setTimeout(() => window.open(`https://wa.me/265997000400?text=${msg}`, '_blank'), 300);
+      setTimeout(() => {
+        btn.textContent = 'Send Order via WhatsApp';
+        btn.style.backgroundColor = '#25d366';
+      }, 3500);
+
+      document.getElementById('orderForm').reset();
+    }
+  </script>
+    <script src="community-wall.js"></script>
+<script>
+// Permanent Dark Mode Across All Pages
+function toggleDarkMode() {
+  const isDark = document.body.classList.toggle('dark-mode');
+  localStorage.setItem('nkawiheDarkMode', isDark);
+  document.getElementById('darkModeToggle').textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+}
+
+// Run when page loads
+if (localStorage.getItem('nkawiheDarkMode') === 'true') {
+  document.body.classList.add('dark-mode');
+  const btn = document.getElementById('darkModeToggle');
+  if (btn) btn.textContent = '☀️ Light Mode';
+} else {
+  const btn = document.getElementById('darkModeToggle');
+  if (btn) btn.textContent = '🌙 Dark Mode';
+}
+</script>
 </body>
 </html>
-
