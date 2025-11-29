@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+match /databases/{database}/documents {
+// This allows any authenticated user (including anonymous) to read and write to the 'comments' collection
+// under the public path for this specific application.
+match /artifacts/{appId}/public/data/comments/{commentId} {
+allow read, create: if request.auth != null;
+// Allow only the original author to update/delete their comment (optional, but good practice)
+allow update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
+}
+
+// Default rule to prevent accidental data access in other paths
+match /{document=**} {
+  allow read, write: if false;
+}
+
+
+}
+}
