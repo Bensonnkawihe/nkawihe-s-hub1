@@ -1,71 +1,169 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <meta charset="UTF-8" /> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-    <meta name="description" content="About Nkawihe’s Hub – Registered business in Mponela | Phone accessories & fresh farm produce" /> 
-    <title>About Us | Nkawihe’s Hub</title> 
-    <link rel="icon" type="image/png" href="favicon.png"> 
-    <link rel="stylesheet" href="style.css" /> 
-    </head> 
-<body> 
-    <header> 
-        <img src="logo.png" alt="Nkawihe's Hub Logo" class="header-logo"> 
-        <h1>Nkawihe’s Hub</h1> 
-        <p>Your trusted partner for quality electronics & fresh produce</p> 
-        <nav> 
-            <ul> 
-                <li><a href="index.html">Home</a></li> 
-                <li><a href="products.html">Products</a></li> 
-                <li><a href="about.html">About Us</a></li> 
-                <li><a href="contact.html">Contact</a></li> 
-                <li><a href="order-form.html">Online Order</a></li> 
-            </ul> 
-        </nav> 
-    </header> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About Nkawihe’s Hub – Registered business in Mponela | Phone accessories & fresh farm produce" />
+  <title>About Us | Nkawihe’s Hub</title>
 
-    <section> 
-        <h2>Who We Are</h2> 
-        <p> 
-            Nkawihe’s Hub is a registered and trusted family business based in Mponela, Malawi. We specialize in quality phone accessories and fresh farm produce, serving our community with fair prices and excellent customer service every day. 
-        </p> 
-        <p><strong>Registered Business:</strong> NKAWIHE'S HUB - BRN: V6SVW5N</p> 
-        <p style="text-align:center; margin-top:35px;"> 
-            <a href="order-form.html" class="cta-button">🛍️ Place an Order Now!</a> 
-        </p> 
-        <p style="text-align:center;">
-             <a href="https://wa.me/265997000400" class="whatsapp cta-button">Chat on WhatsApp</a> 
-             <a href="https://facebook.com/nkawiheshub" class="facebook cta-button">Visit Facebook Page</a> 
-        </p>
-    </section> 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css" />
 
-    <section> 
-        <h2>Why Choose Nkawihe’s Hub?</h2> 
-        <ul> 
-            <li>Registered and reliable business (BRN: V6SVW5N)</li> 
-            <li>Affordable and competitive prices</li> 
-            <li>Quality guaranteed products</li> 
-            <li>Fast and friendly customer service</li> 
-            <li>Direct support to local farmers</li> 
-        </ul> 
-    </section> 
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; }
+    section { animation: fadeIn 0.8s; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
 
-    <section> 
-        <h2>What We Offer</h2> 
-        <ul> 
-            <li>Electronics & Accessories: chargers, cables, earphones, power banks, cases, screen protectors, memory cards, repair tools</li> 
-            <li>Fresh Farm Produce: maize, beans, groundnuts, soya beans  direct from local farmers</li> 
-        </ul> 
-    </section> 
+    /* Floating Buttons */
+    .floating-btns {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .floating-btns a {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .floating-btns a:hover { transform: scale(1.15); }
+    .floating-wa { background: #25d366; }
+    .floating-fb { background: #1877f2; }
+    .floating-btns img { width: 38px; }
 
-    <section> 
-        <h2>Our Vision & Mission</h2> 
-        <p><strong>Vision:</strong> To become one of the most trusted and leading suppliers of electronics and agricultural products in Central Malawi.</p> 
-        <p><strong>Mission:</strong> To provide affordable, durable products while supporting local farmers and creating a convenient shopping experience for our customers.</p> 
-    </section> 
+    /* Dark/Light Toggle */
+    .mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 50px;
+      background: #333;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
 
-    <footer> 
-        <p>© 2025 Nkawihe’s Hub • Mponela, Malawi • All rights reserved</p> 
-    </footer> 
-</body> 
+    /* Dark Mode */
+    .dark-mode { background: #121212 !important; color: #e0e0e0; }
+    .dark-mode header, .dark-mode section { background: #1e1e1e !important; }
+  </style>
+</head>
+<body>
+
+  <button id="darkModeToggle" class="mode-toggle" onclick="toggleDarkMode()">
+  🌙 Dark Mode
+</button>
+
+  <header>
+    <img src="logo.png" alt="Nkawihe's Hub Logo" class="header-logo">
+    <h1>Nkawihe’s Hub</h1>
+    <p>Your trusted partner for quality electronics & fresh produce</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="order-form.html">Online Order</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section>
+    <h2>Who We Are</h2>
+    <p>
+      Nkawihe’s Hub is a registered and trusted family business based in Mponela, Malawi. We specialize in quality phone accessories and fresh farm produce, serving our community with fair prices and excellent customer service every day.
+    </p>
+    <p><strong>Registered Business:</strong> NKAWIHE'S HUB - BRN: V6SVW5N</p>
+
+    <div style="text-align:center; margin:40px 0;">
+      <a href="order-form.html" class="cta-button" style="font-size:1.4rem; padding:16px 40px;">Place an Order Now!</a>
+    </div>
+
+    <div class="social-links" style="justify-content:center; gap:20px;">
+      <a href="https://wa.me/265997000400" class="whatsapp cta-button">Chat on WhatsApp</a>
+      <a href="https://facebook.com/nkawiheshub" class="facebook cta-button">Visit Facebook Page</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Why Choose Nkawihe’s Hub?</h2>
+    <ul>
+      <li>Registered and reliable business (BRN: V6SVW5N)</li>
+      <li>Affordable and competitive prices</li>
+      <li>Quality guaranteed products</li>
+      <li>Fast and friendly customer service</li>
+      <li>Direct support to local farmers</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>What We Offer</h2>
+    <ul>
+      <li>Electronics & Accessories: chargers, cables, earphones, power banks, cases, screen protectors, memory cards, repair tools</li>
+      <li>Fresh Farm Produce: maize, beans, groundnuts, soya beans direct from local farmers</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Our Vision & Mission</h2>
+    <p><strong>Vision:</strong> To become one of the most trusted and leading suppliers of electronics and agricultural products in Central Malawi.</p>
+    <p><strong>Mission:</strong> To provide affordable, durable products while supporting local farmers and creating a convenient shopping experience for our customers.</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Nkawihe’s Hub • Mponela, Malawi • All rights reserved</p>
+  </footer>
+
+  <!-- Floating Buttons -->
+  <div class="floating-btns">
+    <a href="https://wa.me/265997000400" class="floating-wa" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+    <a href="https://facebook.com/nkawiheshub" class="floating-fb" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_(2019).svg" alt="Facebook">
+    </a>
+  </div>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      const btn = document.querySelector('.mode-toggle');
+      btn.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+    }
+  </script>
+    <script src="community-wall.js"></script>
+<script>
+// Permanent Dark Mode Across All Pages
+function toggleDarkMode() {
+  const isDark = document.body.classList.toggle('dark-mode');
+  localStorage.setItem('nkawiheDarkMode', isDark);
+  document.getElementById('darkModeToggle').textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+}
+
+// Run when page loads
+if (localStorage.getItem('nkawiheDarkMode') === 'true') {
+  document.body.classList.add('dark-mode');
+  const btn = document.getElementById('darkModeToggle');
+  if (btn) btn.textContent = '☀️ Light Mode';
+} else {
+  const btn = document.getElementById('darkModeToggle');
+  if (btn) btn.textContent = '🌙 Dark Mode';
+}
+</script>
+</body>
 </html>
